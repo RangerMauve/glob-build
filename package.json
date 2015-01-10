@@ -1,0 +1,36 @@
+{
+  "name": "glob-build",
+  "version": "1.0.0",
+  "description": "Globs for files in a directory, processes them all and builds up a nested object",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RangerMauve/glob-build.git"
+  },
+  "keywords": [
+    "glob",
+    "process",
+    "tree",
+    "directory"
+  ],
+  "author": "rangermauve",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RangerMauve/glob-build/issues"
+  },
+  "homepage": "https://github.com/RangerMauve/glob-build",
+  "dependencies": {
+    "any-promise": "^0.1.0",
+    "dotty": "0.0.2",
+    "fs-promise": "^0.3.1",
+    "glob": "^4.3.2",
+    "par": "^0.3.0"
+  },
+  "devDependencies": {
+    "mustache": "^1.0.0",
+    "promise": "^6.0.1"
+  }
+}
