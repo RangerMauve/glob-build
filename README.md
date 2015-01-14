@@ -66,7 +66,7 @@ Takes in a directory, a file extension to match for, and a function for modifyin
 
 -	[directory] `String`: The directory to crawl through. Uses present working directory by default.
 -	[extension] `String`: What file extensions to traget, `*` by default
--	[builder] `Function(contents,name)` A function for building the value for that file in the tree. `contents` is the contents of that file (assumes `utf8`), `name` is a key path for the file in the tree (`looks.like.this`). By default it just sets the value to the contents. Return a `Promise` if you want to do something async.
+-	[builder] `Function(contents,name)` A function for building the value for that file in the tree. `contents` is the contents of that file (assumes `utf8`), `name` is a key path for the file in the tree (`looks.like.this`). By default it just sets the value to the contents.
 
 ### returns
 

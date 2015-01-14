@@ -40,11 +40,7 @@ function load_file(directory, process_file, map, file) {
 }
 
 function build_file(process_file, map, name, contents) {
-	return Promise.resolve(process_file(contents, name))
-		.then(function(result) {
-			dotty.put(map, name, result);
-			return result;
-		});
+	dotty.put(map, name, process_file(contents, name));
 }
 
 function get_name(directory, file_path) {
