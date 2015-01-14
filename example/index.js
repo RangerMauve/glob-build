@@ -1,4 +1,4 @@
-var globBuild = require("../");
+var globBuild = require("../").build;
 var mustache = require("mustache");
 
 globBuild(__dirname, "html", builder).then(function(templates) {

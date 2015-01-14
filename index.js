@@ -5,7 +5,7 @@ var par = require("par");
 var Promise = require("any-promise");
 var dotty = require("dotty");
 
-module.exports = build;
+exports.build = build;
 
 function build(directory, extension, process_file) {
 	process_file = process_file || pass_through;
@@ -49,7 +49,7 @@ function build_file(process_file, map, name, contents) {
 
 function get_name(directory, file_path) {
 	var sep = path.sep;
-	var match_ending = new RegExp("\\" + sep + "?\\..+$", "i");
+	var match_ending = new RegExp("\\..+$", "i");
 	return path
 		.relative(directory, file_path)
 		.replace(match_ending, "")

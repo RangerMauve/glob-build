@@ -32,13 +32,11 @@ With this library, you can easily turn that into a JS object that looks like
 With some simple code:
 
 ```javascript
-var globBuild = require("../");
+var globBuild = require("../").build;
 var mustache = require("mustache");
 
-// Build up the structure of the templates
 globBuild(__dirname, "html", builder).then(function(templates) {
 	console.log("Result:", templates);
-	// { bar: { baz: [Function] }, foo: [Function] }
 	console.log(templates.foo({
 		place: "World"
 	}));
@@ -60,7 +58,7 @@ function builder(contents, name) {
 API
 ---
 
-### `globBuild([directory], [extension], [builder])`
+### `build([directory], [extension], [builder])`
 
 Takes in a directory, a file extension to match for, and a function for modifying files before they're saved to a tree.
 
