@@ -12,7 +12,7 @@ function build(directory, extension, process_file) {
 	extension = extension || "*";
 	directory = directory || "";
 	return get_file_names(directory, extension)
-		.then(par(process_files, directory, extension, process_file));
+		.then(par(process_files, directory, process_file));
 }
 
 function pass_through(content, name) {
@@ -23,19 +23,19 @@ function get_file_names(directory, extension) {
 	return glob(path.join(directory, "**/*." + extension));
 }
 
-function process_files(directory, extension, process_file, files) {
+function process_files(directory, process_file, files) {
 	var map = {};
 	return Promise.all(
 		files.map(
-			par(load_file, directory, extension, process_file, map)
+			par(load_file, directory, process_file, map)
 		)
 	).then(function() {
 		return map;
 	});
 }
 
-function load_file(directory, extension, process_file, map, file) {
-	var name = get_name(directory, extension, file);
+function load_file(directory, process_file, map, file) {
+	var name = get_name(directory, file);
 	return fs.readFile(file, "utf8").then(par(build_file, process_file, map, name));
 }
 
@@ -47,11 +47,13 @@ function build_file(process_file, map, name, contents) {
 		});
 }
 
-function get_name(directory, extension, file_path) {
+function get_name(directory, file_path) {
+	var sep = path.sep;
+	var match_ending = new RegExp("\\" + sep + "?\\..+$", "i");
 	return path
 		.relative(directory, file_path)
-		.replace(new RegExp("." + extension + "$", "i"), "")
-		.split(path.sep)
+		.replace(match_ending, "")
+		.split(sep)
 		.join(".");
 }
 
